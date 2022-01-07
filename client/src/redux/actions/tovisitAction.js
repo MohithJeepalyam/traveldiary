@@ -60,7 +60,7 @@ export const updateTovisit = ({placeName, status}) => async (dispatch) => {
 
         const res = await patchDataAPI(`tovisit/${status._id}`, { 
            placeName 
-        }, auth.token)
+        })
 
         dispatch({ type: TOVISIT_TYPES.UPDATE_TOVISIT, payload: res.data.newTovisit })
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
 import Status from '../components/home/Status'
+import Input from '../components/home/Input'
 import Posts from '../components/home/Posts'
 import LeftSideBar from '../components/home/LeftSideBar'
 
@@ -48,7 +49,8 @@ const Home = () => {
             </div>
             
             <div className="col-md-4">
-                <RightSideBar />
+                <Input />
+                {/* <RightSideBar /> */}
             </div>
         </div>
     )

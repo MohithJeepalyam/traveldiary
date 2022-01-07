@@ -16,7 +16,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { refreshToken } from './redux/actions/authAction'
 import { getPosts } from './redux/actions/postAction'
 import { getSuggestions } from './redux/actions/suggestionsAction'
-import { getTovisits } from './redux/actions/tovisitAction'
+import { getTovisit } from './redux/actions/tovisitAction'
 
 import io from 'socket.io-client'
 import { GLOBALTYPES } from './redux/actions/globalTypes'
@@ -43,7 +43,7 @@ function App() {
       dispatch(getPosts(auth.token))
       dispatch(getSuggestions(auth.token))
       dispatch(getNotifies(auth.token))
-      dispatch(getTovisits(auth.token))
+      dispatch(getTovisit(auth.token))
     }
   }, [dispatch, auth.token])
 

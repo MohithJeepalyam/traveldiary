@@ -8,7 +8,7 @@ const initialState = {
     page: 2
 }
 
-const tovistReducer = (state = initialState, action) => {
+const tovisitReducer = (state = initialState, action) => {
     switch (action.type){
         case TOVISIT_TYPES.CREATE_TOVISIT:
             return {

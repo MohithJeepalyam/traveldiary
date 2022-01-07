@@ -3,6 +3,7 @@ export const GLOBALTYPES = {
     ALERT: "ALERT",
     THEME: 'THEME',
     STATUS: 'STATUS',
+    INPUT: 'INPUT',
     MODAL: 'MODAL',
     SOCKET: 'SOCKET',
     ONLINE: 'ONLINE',
