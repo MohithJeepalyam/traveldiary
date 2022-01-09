@@ -1,44 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import TovisitCard from '../TovisitCard'
 
-import UserCard from '../UserCard'
-import FollowBtn from '../FollowBtn'
 import LoadIcon from '../../images/loading.gif'
-import { getSuggestions } from '../../redux/actions/suggestionsAction'
+import LoadMoreBtn from '../LoadMoreBtn'
+import { getDataAPI } from '../../utils/fetchData'
+import { POST_TYPES } from '../../redux/actions/postAction'
 
-const LeftSideBar = () => {
-    const { auth, suggestions } = useSelector(state => state)
+
+const Tovisits = () => {
+    const { homeTovisits, auth, theme } = useSelector(state => state)
     const dispatch = useDispatch()
 
+    const [load, setLoad] = useState(false)
+
+    const handleLoadMore = async () => {
+        setLoad(true)
+        const res = await getDataAPI(`tovisits?limit=${homeTovisits.tovisits * 9}`, auth.token)
+
+        dispatch({
+            type: POST_TYPES.GET_TOVIST, 
+            payload: {...res.data, tovisits: homeTovisits.tovisits + 1}
+        })
+
+        setLoad(false)
+    }
+
     return (
-        <div className="mt-3">
-            <UserCard user={auth.user} />
-
-            <div className="d-flex justify-content-between align-items-center my-2">
-                <h5 className="text-danger">Suggestions for you</h5>
-                {
-                    !suggestions.loading &&
-                    <i className="fas fa-redo" style={{cursor: 'pointer'}}
-                    onClick={ () => dispatch(getSuggestions(auth.token)) } />
-                }
-            </div>
-
+        <div className="tovisitsContainer">
+            {console.log(homeTovisits)}
             {
-                suggestions.loading
-                ? <img src={LoadIcon} alt="loading" className="d-block mx-auto my-4" />
-                : <div className="suggestions">
-                    {
-                        suggestions.users.map(user => (
-                            <UserCard key={user._id} user={user} >
-                                <FollowBtn user={user} />
-                            </UserCard>
-                        ))
-                    }
-                </div>
+                homeTovisits.tovisits.map(tovisit => (
+                    <TovisitCard key={tovisit._id} post={tovisit} theme={theme} />
+                ))
             }
 
+            {
+                load && <img src={LoadIcon} alt="loading" className="d-block mx-auto" />
+            }
+
+            
+            <LoadMoreBtn result={homeTovisits.result} page={homeTovisits.tovisit}
+            load={load} handleLoadMore={handleLoadMore} />
         </div>
     )
 }
 
-export default LeftSideBar
+export default Tovisits
