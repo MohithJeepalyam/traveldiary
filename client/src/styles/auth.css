@@ -1,11 +1,27 @@
 .auth_page{
-    width: 100%;
+    width: 50%;
     min-height: 100vh;
-    background: #fdfdfd;
+    /* background: #fdfdfd; */
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.quotes{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 10%;
+}
+
+.auth_bg{
+    background-image: url(../images/register-bg-2.jpg);
+    background-size: cover;
+    display: flex;
+}
+
 .auth_page form{
     background: #fff;
     max-width: 400px;

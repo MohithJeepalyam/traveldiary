@@ -10,6 +10,8 @@ const StatusModal = () => {
     const dispatch = useDispatch()
 
     const [content, setContent] = useState('')
+    const [placeName, setPlaceName] = useState('')
+    const [type, setType] = useState('')
     const [images, setImages] = useState([])
 
     const [stream, setStream] = useState(false)
@@ -82,13 +84,15 @@ const StatusModal = () => {
         })
 
         if(status.onEdit){
-            dispatch(updatePost({content, images, auth, status}))
+            dispatch(updatePost({content, placeName, type, images, auth, status}))
         }else{
-            dispatch(createPost({content, images, auth, socket}))
+            dispatch(createPost({content, placeName, type,  images, auth, socket}))
         }
         
 
         setContent('')
+        setPlaceName('')
+        setType('')
         setImages([])
         if(tracks) tracks.stop()
         dispatch({ type: GLOBALTYPES.STATUS, payload: false})
@@ -97,6 +101,8 @@ const StatusModal = () => {
     useEffect(() => {
         if(status.onEdit){
             setContent(status.content)
+            setPlaceName(status.placeName)
+            setType(status.type)
             setImages(status.images)
         }
     },[status])
@@ -117,8 +123,28 @@ const StatusModal = () => {
                 </div>
 
                 <div className="status_body">
-                    <textarea name="content" value={content}
-                    placeholder={`${auth.user.username}, what are you thinking?`}
+
+
+                    <textarea  name="placeName" value={placeName}
+                    placeholder={`location name`}
+                    onChange={e => setPlaceName(e.target.value)}
+                    style={{
+                        filter: theme ? 'invert(1)' : 'invert(0)',
+                        color: theme ? 'white' : '#111',
+                        background: theme ? 'rgba(0,0,0,.03)' : '',
+                    }} />
+
+                    <textarea name="type" value={type}
+                    placeholder={`type of the place`}
+                    onChange={e => setType(e.target.value)}
+                    style={{
+                        filter: theme ? 'invert(1)' : 'invert(0)',
+                        color: theme ? 'white' : '#111',
+                        background: theme ? 'rgba(0,0,0,.03)' : '',
+                    }} />
+
+                    <textarea className='ta-content' name="content" value={content}
+                    placeholder={`about you travel`}
                     onChange={e => setContent(e.target.value)}
                     style={{
                         filter: theme ? 'invert(1)' : 'invert(0)',

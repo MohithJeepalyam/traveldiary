@@ -12,6 +12,10 @@ const CardBody = ({post, theme}) => {
                 filter: theme ? 'invert(1)' : 'invert(0)',
                 color: theme ? 'white' : '#111',
             }}>
+
+                <div className='place-name'>
+                    <h6>{post.placeName + " - " +post.type}</h6>
+                </div>
                 <span>
                     {
                         post.content.length < 60 

@@ -6,6 +6,8 @@ const postSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
+    placeName: String,
+    type: String,
     likes: [{ type: mongoose.Types.ObjectId, ref: 'user' }],
     comments: [{ type: mongoose.Types.ObjectId, ref: 'comment' }],
     user: {type: mongoose.Types.ObjectId, ref: 'user'}

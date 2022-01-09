@@ -31,11 +31,15 @@
 }
 .status_body textarea{
     width: 100%;
-    min-height: 150px;
     border: none;
     outline: none;
     resize: none;
 }
+
+.ta-content{
+min-height: 150px;
+}
+
 .status_body .input_images{
     display: flex;
     justify-content: center;

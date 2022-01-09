@@ -4,8 +4,6 @@ import Status from '../components/home/Status'
 import Posts from '../components/home/Posts'
 import LeftSideBar from '../components/home/LeftSideBar'
 
-import RightSideBar from '../components/home/RightSideBar'
-
 import { useSelector } from 'react-redux'
 import LoadIcon from '../images/loading.gif'
 
@@ -47,9 +45,7 @@ const Home = () => {
                 
             </div>
             
-            <div className="col-md-4">
-                <RightSideBar />
-            </div>
+            
         </div>
     )
 }

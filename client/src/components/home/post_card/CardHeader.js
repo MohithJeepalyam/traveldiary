@@ -43,6 +43,7 @@ const CardHeader = ({post}) => {
                         {moment(post.createdAt).fromNow()}
                     </small>
                 </div>
+                
             </div>
 
             <div className="nav-item dropdown">

@@ -32,7 +32,23 @@ const Register = () => {
         dispatch(register(userData))
     }
 
+    const returnQuote = () => {
+        const quotes = [
+            "Life is a journey, not a destination",
+             "Travel is the only thing you buy that makes you richer - Ralph Waldo Emerson",
+             "The journey is my home - Muriel Rukeyser",
+            ]
+
+        return <h1>{quotes[Math.floor(Math.random()*3)]}</h1>
+    }
+
     return (
+        <div className='auth_bg'>
+
+        <div className='quotes'>
+        {returnQuote()}
+        </div>
+
         <div className="auth_page">
             <form onSubmit={handleSubmit}>
                 <h3 className="text-uppercase text-center mb-4">V-Network</h3>
@@ -135,6 +151,7 @@ const Register = () => {
                     Already have an account? <Link to="/" style={{color: "crimson"}}>Login Now</Link>
                 </p>
             </form>
+        </div>
         </div>
     )
 }
